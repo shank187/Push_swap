@@ -1,0 +1,31 @@
+#ifndef PUSH_SWAP
+#define PUSH_SWAP
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <limits.h>
+#include <unistd.h>
+typedef struct s_list
+{
+	int content;
+	struct s_list *next;
+} t_list;
+
+char	*ft_strjoin(char *s1, char *s2);
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+size_t	ft_strlen(const char *s);
+long	ft_atoi(const char *str);
+char	**ft_split(char *s, char c);
+char **to_arr(int ac, char *av[]);
+char	*ft_strdup(const char *s1);
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+void ft_lstadd_back(t_list **lst, t_list *new);
+void ft_clear(t_list **lst, char **arr, char *s);
+int		ft_printf(const char *s, ...);
+
+
+// testing
+void print_content(t_list *head);
+
+#endif
