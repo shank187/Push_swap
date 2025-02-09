@@ -6,7 +6,7 @@
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 19:00:34 by aelbour           #+#    #+#             */
-/*   Updated: 2025/02/08 19:45:14 by aelbour          ###   ########.fr       */
+/*   Updated: 2025/02/08 20:00:09 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,15 +74,4 @@ t_list *stock_args(char **arr)
 		i++;
 	}
 	return top_a;
-}
-
-int main(int ac, char *av[])
-{
-	char **arr ;
-	t_list *top_a;
-	arr = to_arr(ac, av);
-	top_a = stock_args(arr);
-
-	print_content(top_a);
-
 }

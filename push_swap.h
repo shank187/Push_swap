@@ -23,7 +23,10 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 void ft_lstadd_back(t_list **lst, t_list *new);
 void ft_clear(t_list **lst, char **arr, char *s);
 int		ft_printf(const char *s, ...);
-
+int ft_lstsize(t_list *lst);
+t_list *stock_args(char **arr);
+t_list	*ft_lstlast(t_list *lst);
+t_list *get_beflast(t_list *lst);
 
 // testing
 void print_content(t_list *head);

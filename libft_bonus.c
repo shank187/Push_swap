@@ -6,7 +6,7 @@
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 21:24:37 by aelbour           #+#    #+#             */
-/*   Updated: 2025/02/08 19:54:10 by aelbour          ###   ########.fr       */
+/*   Updated: 2025/02/09 19:44:47 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,12 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	if (!*lst)
 	{
 		*lst = new;
+		new -> next = NULL;
 		return;
 	}
 	ptr = ft_lstlast(*lst);
 	ptr -> next = new;
+	new -> next = NULL;
 }
 
 
@@ -73,17 +75,32 @@ void	ft_clear(t_list **lst, char **arr, char *s)
 	exit(1);
 }
 
-// void ft_lstiter(t_list *lst, void (*f)(void *))
-// {
-// 	t_list *ptr;
+int ft_lstsize(t_list *lst)
+{
+	t_list *ptr;
+	int count;
 
-// 	if (!lst || !f)
-// 		return;
-// 	ptr = lst;
-// 	while (ptr)
-// 	{
-// 		f(ptr->content);
-// 		ptr = ptr->next;
-// 	}
-// }
+	ptr = lst;
+	count = 0;
+	while(ptr)
+	{
+		ptr = ptr -> next;
+		count++;
+	}
+	return(count);
+}
+
+t_list *get_beflast(t_list *lst)
+{
+	t_list *ptr;
+
+	if(!lst || !(lst -> next))
+		return (NULL);
+	ptr = lst;
+	while((ptr -> next )-> next)
+	{
+		ptr = ptr -> next;
+	}
+	return (ptr);
+}
 
