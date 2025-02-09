@@ -6,7 +6,7 @@
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 19:00:34 by aelbour           #+#    #+#             */
-/*   Updated: 2025/02/08 20:00:09 by aelbour          ###   ########.fr       */
+/*   Updated: 2025/02/09 21:51:08 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,11 @@ char **to_arr(int ac, char *av[])
 	return(ft_split(s,' '));
 }
 
+void	check_dubl(n, arr)
+{
+	
+}
+
 t_list *stock_args(char **arr)
 {
 	long i, n;
@@ -63,6 +68,7 @@ t_list *stock_args(char **arr)
 	while(arr[i])
 	{
 		n = ft_atoi(arr[i]);
+		check_dubl(n, arr);
 		printf("arr = %s num = %li\n",arr[i], n);
 		if(n > INT_MAX || n < INT_MIN)
 			return(ft_clear(&top_a, arr, NULL),NULL);

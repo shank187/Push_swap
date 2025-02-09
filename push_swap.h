@@ -27,7 +27,7 @@ int ft_lstsize(t_list *lst);
 t_list *stock_args(char **arr);
 t_list	*ft_lstlast(t_list *lst);
 t_list *get_beflast(t_list *lst);
-
+void	check_dubl(n, arr);
 // testing
 void print_content(t_list *head);
 
