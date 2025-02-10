@@ -6,7 +6,7 @@
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 19:00:34 by aelbour           #+#    #+#             */
-/*   Updated: 2025/02/09 21:51:08 by aelbour          ###   ########.fr       */
+/*   Updated: 2025/02/10 16:28:20 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int is_spcnum(char *s)
 
 char **to_arr(int ac, char *av[])
 {
-	size_t	i;
+	int	i;
 	char *s;
 
 	s = ft_strjoin(ft_strdup(""),av[1]);
@@ -51,9 +51,17 @@ char **to_arr(int ac, char *av[])
 	return(ft_split(s,' '));
 }
 
-void	check_dubl(n, arr)
+int	check_dubl(int n, t_list *top_a)
 {
-	
+	if(!top_a)
+		return(1);
+	while (top_a)
+	{
+		if(n == top_a -> content)
+			return(0);
+		top_a = top_a -> next;
+	}
+	return(1);
 }
 
 t_list *stock_args(char **arr)
@@ -68,9 +76,10 @@ t_list *stock_args(char **arr)
 	while(arr[i])
 	{
 		n = ft_atoi(arr[i]);
-		check_dubl(n, arr);
 		printf("arr = %s num = %li\n",arr[i], n);
 		if(n > INT_MAX || n < INT_MIN)
+			return(ft_clear(&top_a, arr, NULL),NULL);
+		else if(!check_dubl(n, top_a))
 			return(ft_clear(&top_a, arr, NULL),NULL);
 		node = malloc(sizeof(t_list *));
 		if(!node)
