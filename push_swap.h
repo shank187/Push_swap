@@ -7,8 +7,13 @@
 #include <unistd.h>
 typedef struct s_list
 {
-	int content;
-	struct s_list *next;
+	int				content;
+	int				index;
+	int				pos;
+	int				target_pos;
+	int				cost_a;
+	int				cost_b;
+	struct	s_list *next;
 } t_list;
 
 char	*ft_strjoin(char *s1, char *s2);
@@ -21,7 +26,7 @@ char **to_arr(int ac, char *av[]);
 char	*ft_strdup(const char *s1);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 void ft_lstadd_back(t_list **lst, t_list *new);
-void ft_clear(t_list **lst, char **arr, char *s);
+void ft_clear(t_list **lst, char **arr, char *s, int quit);
 int		ft_printf(const char *s, ...);
 int ft_lstsize(t_list *lst);
 t_list *stock_args(char **arr);

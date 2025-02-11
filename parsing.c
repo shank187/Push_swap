@@ -6,7 +6,7 @@
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 19:00:34 by aelbour           #+#    #+#             */
-/*   Updated: 2025/02/10 16:28:20 by aelbour          ###   ########.fr       */
+/*   Updated: 2025/02/10 21:41:22 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ char **to_arr(int ac, char *av[])
 	i = 2;
 	while(i < ac)
 	{	if(!is_spcnum(av[i]))
-			return(ft_clear(NULL, NULL, s),NULL);
+			return(ft_clear(NULL, NULL, s, 1),NULL);
 		s = ft_strjoin(s, " ");
 		if(!(s))
-			return(ft_clear(NULL, NULL, s),NULL);
+			return(ft_clear(NULL, NULL, NULL, 1),NULL);
 		(s) = ft_strjoin((s), av[i]);
 		if(!(s))
-			return(ft_clear(NULL, NULL, s),NULL);
+			return(ft_clear(NULL, NULL, NULL, 1),NULL);
 		i++;
 	}
 	printf("string of args |%s|\n",s);
@@ -78,12 +78,12 @@ t_list *stock_args(char **arr)
 		n = ft_atoi(arr[i]);
 		printf("arr = %s num = %li\n",arr[i], n);
 		if(n > INT_MAX || n < INT_MIN)
-			return(ft_clear(&top_a, arr, NULL),NULL);
+			return(ft_clear(&top_a, arr, NULL,1),NULL);
 		else if(!check_dubl(n, top_a))
-			return(ft_clear(&top_a, arr, NULL),NULL);
+			return(ft_clear(&top_a, arr, NULL,1),NULL);
 		node = malloc(sizeof(t_list *));
 		if(!node)
-			return(ft_clear(&top_a, arr, NULL), NULL);
+			return(ft_clear(&top_a, arr, NULL,1), NULL);
 		node -> content = n;
 		ft_lstadd_back(&top_a, node);
 		i++;

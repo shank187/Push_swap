@@ -6,7 +6,7 @@
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 21:24:37 by aelbour           #+#    #+#             */
-/*   Updated: 2025/02/09 19:44:47 by aelbour          ###   ########.fr       */
+/*   Updated: 2025/02/11 13:38:46 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 }
 
 
-void	ft_clear(t_list **lst, char **arr, char *s)
+void	ft_clear(t_list **lst, char **arr, char *s, int quit)
 {
 	t_list	*ptr;
 	t_list	*tmp;
@@ -71,8 +71,11 @@ void	ft_clear(t_list **lst, char **arr, char *s)
 			printf("freed subs with value = %s\n",arr[i]);
 			free(arr[i++]);
 		}
-	write(2, "Error\n" ,6);
-	exit(1);
+	if(quit)
+	{
+		write(2, "Error\n" ,6);
+		exit(1);		
+	}
 }
 
 int ft_lstsize(t_list *lst)
