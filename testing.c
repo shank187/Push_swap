@@ -45,9 +45,11 @@ int is_sorted(t_list *top_a)
 	last = INT_MIN;
 	while(top_a)
 	{
-		if (top_a -> content < last)
+		if ((top_a -> content) < last)
 			return(0);
+		last = top_a -> content;
 		top_a = top_a -> next;
 	}
+	// ft_printf("is sorted\n");
 	return(1);
 }
