@@ -92,18 +92,18 @@ char	**ft_split(char *s, char c)
 	char	**arr;
 
 	if (!s)
-		return (ft_clear(NULL, NULL, NULL), NULL);  
+		return (ft_clear(NULL, NULL, NULL, 1), NULL);  
 	cols = count_cols(s, c);
 	arr = (char **)malloc((cols + 1) * sizeof(char *));
 	if (!arr)
-		return (ft_clear(NULL, NULL, s), NULL);			
+		return (ft_clear(NULL, NULL, s, 1), NULL);			
 	arr[cols] = NULL;
 	if (cols)
 	{
 		if (ft_store(arr, s, c, cols))
 			return (free(s), arr);
 		else
-			return (ft_clear(NULL, NULL, s), NULL);			
+			return (ft_clear(NULL, NULL, s, 1), NULL);			
 	}
 	return (free(s), arr);
 }

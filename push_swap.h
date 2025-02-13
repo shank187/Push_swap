@@ -19,11 +19,10 @@ typedef struct s_list
 char	*ft_strjoin(char *s1, char *s2);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-size_t	ft_strlen(const char *s);
+size_t	fp_strlen(const char *s);
 long	ft_atoi(const char *str);
 char	**ft_split(char *s, char c);
-char **to_arr(int ac, char *av[]);
-char	*ft_strdup(const char *s1);
+  char	*ft_strdup(const char *s1);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 void ft_lstadd_back(t_list **lst, t_list *new);
 void ft_clear(t_list **lst, char **arr, char *s, int quit);
@@ -33,6 +32,10 @@ t_list *stock_args(char **arr);
 t_list	*ft_lstlast(t_list *lst);
 t_list *get_beflast(t_list *lst);
 int	check_dubl(int n, t_list *top_a);
+int get_index(t_list *top_a, int number);
+char **to_arr(int ac, char *av[]);
+int is_sorted(t_list *top_a);
+
 // testing
 void print_content(t_list *head);
 

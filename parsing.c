@@ -63,6 +63,14 @@ int	check_dubl(int n, t_list *top_a)
 	}
 	return(1);
 }
+void insert_data(t_list *node, t_list *top_a, int n)
+{
+		node -> content = n;
+		if (!top_a)
+			node -> index = 1;
+		else
+			node -> index = get_index(top_a, n);
+}
 
 t_list *stock_args(char **arr)
 {
@@ -81,10 +89,10 @@ t_list *stock_args(char **arr)
 			return(ft_clear(&top_a, arr, NULL,1),NULL);
 		else if(!check_dubl(n, top_a))
 			return(ft_clear(&top_a, arr, NULL,1),NULL);
-		node = malloc(sizeof(t_list *));
+		node = malloc(sizeof(t_list));
 		if(!node)
 			return(ft_clear(&top_a, arr, NULL,1), NULL);
-		node -> content = n;
+		insert_data(node, top_a, n);
 		ft_lstadd_back(&top_a, node);
 		i++;
 	}
