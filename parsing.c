@@ -84,7 +84,7 @@ t_list *stock_args(char **arr)
 	while(arr[i])
 	{
 		n = ft_atoi(arr[i]);
-		printf("arr = %s num = %li\n",arr[i], n);
+		// printf("arr = %s num = %li\n",arr[i], n);
 		if(n > INT_MAX || n < INT_MIN)
 			return(ft_clear(&top_a, arr, NULL,1),NULL);
 		else if(!check_dubl(n, top_a))

@@ -35,8 +35,10 @@ int	check_dubl(int n, t_list *top_a);
 int get_index(t_list *top_a, int number);
 char **to_arr(int ac, char *av[]);
 int is_sorted(t_list *top_a);
-void rra(t_list *top_a);
-void sa(t_list *top_a);
+t_list *rra(t_list *top_a);
+t_list *sa(t_list *top_a);
+t_list *ra(t_list *top_a);
+
 // testing
 void print_content(t_list *head);
 

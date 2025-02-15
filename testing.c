@@ -41,7 +41,7 @@ int get_index(t_list *top_a, int number)
 int is_sorted(t_list *top_a)
 {
 	int last;
-
+	// print_content(top_a);
 	last = INT_MIN;
 	while(top_a)
 	{

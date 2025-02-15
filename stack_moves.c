@@ -27,19 +27,19 @@ void sb(t_list *top_b)
 	top_b -> content = tmp;
 }
 
-void sa(t_list *top_a)
+t_list *sa(t_list *top_a)
 {
-	int tmp;
-	t_list *ptr;
+	t_list *tmp;
 
-	if(!top_a)
-		return;
-	ptr = top_a -> next;
-	if(!ptr)
-		return;
-	tmp = ptr -> content;
-	ptr -> content = top_a -> content;
-	top_a -> content = tmp;
+	if(!top_a || !(top_a -> next))
+		return(top_a);
+	tmp = top_a -> next;
+	top_a -> next = top_a -> next -> next;
+	tmp -> next = top_a;
+	top_a = tmp;
+	ft_printf("sa\n");
+	print_content(top_a);
+	return(top_a);
 }
 
 void ss(t_list *top_a, t_list *top_b)
@@ -90,21 +90,24 @@ void rb(t_list *top_b)
 	}
 }
 
-void ra(t_list *top_a)
+t_list *ra(t_list *top_a)
 {
 	int n;
+	ft_printf("ra\n");
 	t_list *tmp;
 	n = ft_lstsize(top_a);
 	if (!top_a || n < 2)
-		return;
+		return(ft_printf("this cond s true 00\n"),top_a);
 	else if(n == 2)
-		sa(top_a);
+		return(ft_printf("this cond s true\n"),sa(top_a), top_a);
 	else
 	{
 		tmp = top_a;
 		top_a = tmp -> next;
 		ft_lstadd_back(&top_a, tmp);
 	}
+	print_content(top_a);
+	return(top_a);
 }
 
 void rr(t_list *top_a, t_list *top_b)
@@ -113,7 +116,7 @@ void rr(t_list *top_a, t_list *top_b)
 	rb(top_b);
 }
 
-void rra(t_list *top_a)
+t_list *rra(t_list *top_a)
 {
 	t_list *last_node;
 	t_list *bef_last;
@@ -121,14 +124,17 @@ void rra(t_list *top_a)
 
 	n = ft_lstsize(top_a);
 	if (!top_a || n < 2)
-		return;
+		return(top_a);
 	else if(n == 2)
-		sa(top_a);
+		return(sa(top_a), top_a);
 	last_node = ft_lstlast(top_a);
 	bef_last =  get_beflast(top_a);
 	bef_last -> next = NULL;
 	last_node -> next = top_a;
 	top_a = last_node;
+	ft_printf("rra\n");
+	print_content(top_a);
+	return(top_a);
 }
 
 void rrb(t_list *top_b)
