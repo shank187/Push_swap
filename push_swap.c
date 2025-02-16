@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+I'm/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
@@ -87,7 +87,7 @@ int main(int ac, char *av[])
 		return(ft_printf("sa\n"),ft_clear(&top_a, 0, 0, 0), 1);
 	else if (ft_lstsize(top_a) == 3)
 		handle_3num(&top_a);
-	else if (ft_lstsize(top_a) == 3)
+	else if (ft_lstsize(top_a) > 3)
 	{
 
 	}
