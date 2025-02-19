@@ -1,4 +1,4 @@
-I'm/* ************************************************************************** */
+I/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
@@ -23,19 +23,22 @@ void handle_3num(t_list **top_a)
 		ptr = ptr -> next;
 	if(i == 2)
 	{	
-		if(is_sorted(*top_a = rra(*top_a)) == 0)	
-			sa(*top_a);
+		rra(top_a);
+		if(is_sorted(*top_a) == 0)	
+			sa(top_a);
 	}
 	else if(i == 3)
 	{
-		*top_a = sa(*top_a);
+		sa(top_a);
 	}
 	else if(i == 1)
 	{
-		if(is_sorted(*top_a = ra(*top_a)) == 0)	
-			sa(*top_a);
+		ra(top_a);
+		if(is_sorted((*top_a)) == 0)	
+			sa(top_a);
 	}
 }
+
 void update_poses(t_list *stack, int is_b)
 {
 	int i;
@@ -55,19 +58,72 @@ void update_poses(t_list *stack, int is_b)
 
 }
 
+int aim_target(t_list *stack_b, t_list *stack_a)
+{
+	int min, target, sml, sml_pos;
+
+	min = INT_MAX;
+	sml = INT_MAX;
+	target = -1;
+	while(stack_a)
+	{
+		if((stack_a -> index) > (stack_b -> index) && (stack_a -> index) < min)
+		{
+			target = stack_a -> pos;
+			min = stack_a -> index;
+		}
+		if((stack_a -> index) < sml)
+			{
+				sml = stack_a -> index;
+				sml_pos = stack_a -> pos;
+			}
+		stack_a = stack_a -> next;
+	}
+	if(target == -1)
+		target = sml_pos;
+	return(target);
+}
+
+void update_infos(t_list *stack_a, t_list *stack_b)
+{
+	int i;
+	t_list *tmp;
+
+	tmp = stack_a;
+	i = 0;
+	while(tmp)
+		tmp->pos = i++, tmp = tmp->next;
+	tmp = stack_b;
+	while(tmp)
+	{
+		tmp -> pos = i++;
+		tmp -> target_pos = aim_target(tmp, stack_a);
+		tmp = tmp->next;
+	}
+
+}
+
 void push_2b(t_list **top_a, t_list **top_b, int size_a)
 {
 	int i;
 
-	i = size_a - 3;
-	while(i)
+	i = 0;
+	while(i < size_a / 2)
 	{
-		if ((*top_a) -> index < (size_a / 2))
+		if((*top_a) -> index < size_a / 2)
 		{
-			// *top_b = pb(*top_a,)
+			pb(top_a, top_b);
+			i++;
 		}
-		
+		else
+			ra(top_a);
+	} 
+	while(i < size_a - 3)
+	{
+		pb(top_a, top_b);
+		i++;
 	}
+	handle_3num(top_a);
 }
 
 int main(int ac, char *av[])

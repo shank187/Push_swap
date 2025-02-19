@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <limits.h>
 #include <unistd.h>
+#include  <sys/types.h>
 typedef struct s_list
 {
 	int				content;
@@ -17,7 +18,7 @@ typedef struct s_list
 } t_list;
 
 char	*ft_strjoin(char *s1, char *s2);
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
+ssize_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 size_t	fp_strlen(const char *s);
 long	ft_atoi(const char *str);
@@ -35,9 +36,11 @@ int	check_dubl(int n, t_list *top_a);
 int get_index(t_list *top_a, int number);
 char **to_arr(int ac, char *av[]);
 int is_sorted(t_list *top_a);
-t_list *rra(t_list *top_a);
-t_list *sa(t_list *top_a);
-t_list *ra(t_list *top_a);
+
+void	rra(t_list **top_a);
+void	sa(t_list **top_a);
+void	ra(t_list **top_a);
+void pb(t_list **top_a, t_list **top_b);
 
 // testing
 void print_content(t_list *head);
