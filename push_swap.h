@@ -6,6 +6,7 @@
 #include <limits.h>
 #include <unistd.h>
 #include  <sys/types.h>
+
 typedef struct s_list
 {
 	int				content;
@@ -18,7 +19,7 @@ typedef struct s_list
 } t_list;
 
 char	*ft_strjoin(char *s1, char *s2);
-ssize_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 size_t	fp_strlen(const char *s);
 long	ft_atoi(const char *str);

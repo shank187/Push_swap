@@ -84,6 +84,18 @@ int aim_target(t_list *stack_b, t_list *stack_a)
 	return(target);
 }
 
+void calc_costs(t_list *stack_b, int a_size, int b_size)
+{
+	if ((stack_b -> pos) <= b_size / 2)
+		stack_b -> cost_b = stack_b -> pos;
+	else
+		stack_b -> cost_b = (stack_b -> pos) - b_size;
+	if((stack_b -> target_pos) <= a_size)
+		stack_b -> cost_a = stack_b -> target_pos;
+	else
+		stack_b -> cost_a = (stack_b -> target_pos) - a_size;
+}
+
 void update_infos(t_list *stack_a, t_list *stack_b)
 {
 	int i;
@@ -98,9 +110,9 @@ void update_infos(t_list *stack_a, t_list *stack_b)
 	{
 		tmp -> pos = i++;
 		tmp -> target_pos = aim_target(tmp, stack_a);
+		calc_costs(tmp, ft_lstsize(stack_a), ft_lstsize(stack_b));
 		tmp = tmp->next;
 	}
-
 }
 
 void push_2b(t_list **top_a, t_list **top_b, int size_a)
@@ -124,6 +136,37 @@ void push_2b(t_list **top_a, t_list **top_b, int size_a)
 		i++;
 	}
 	handle_3num(top_a);
+}
+
+ft_abs(int n)
+{
+	if(n < 0)
+		n *=(-1);
+	return(n);
+}
+
+void best_move(t_list **top_a, t_list **top_b)
+{
+	t_list *tmp;
+	int min_cost;
+
+	min_cost = INT_MAX;
+	tmp = *top_b;
+	while(tmp)
+	{
+		tmp = tmp -> next;
+	}
+}
+
+void sort_all(t_list **top_a,t_list **top_b)
+{
+	push_2b(top_a, top_b, ft_lstsize(*top_a));
+	while(ft_lstsize(top_b))
+	{
+		update_infos(*top_a, *top_a);
+		
+	}
+	
 }
 
 int main(int ac, char *av[])
