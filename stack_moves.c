@@ -6,7 +6,7 @@
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 20:05:34 by aelbour           #+#    #+#             */
-/*   Updated: 2025/02/19 10:19:19 by aelbour          ###   ########.fr       */
+/*   Updated: 2025/02/21 16:10:41 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void sb(t_list **top_b)
 	(*top_b) -> next = (*top_b) -> next -> next;
 	tmp -> next = (*top_b);
 	(*top_b) = tmp;
-	ft_printf("sa\n");
-	print_content((*top_b));
+	ft_printf("sb\n");
+	// print_content((*top_b));
 	return((*top_b));
 }
 
@@ -38,14 +38,15 @@ void	sa(t_list **top_a)
 	tmp -> next = (*top_a);
 	(*top_a) = tmp;
 	ft_printf("sa\n");
-	print_content((*top_a));
+	// print_content((*top_a));
 	return((*top_a));
 }
 
-void ss(t_list *top_a, t_list *top_b)
+void ss(t_list **top_a, t_list **top_b)
 {
 	sa(top_a);
 	sb(top_b);
+	ft_printf("ss\n");
 }
 
 void pa(t_list **top_a, t_list **top_b)
@@ -58,6 +59,7 @@ void pa(t_list **top_a, t_list **top_b)
 	(*top_b) = (*top_b) -> next;
 	tmp -> next = (*top_a);
 	(*top_a) = tmp;
+	ft_printf("pa\n");
 }
 
 void pb(t_list **top_a, t_list **top_b)
@@ -70,50 +72,51 @@ void pb(t_list **top_a, t_list **top_b)
 	(*top_a) = (*top_a) -> next;
 	tmp -> next = (*top_b);
 	(*top_b) = tmp;
+	ft_printf("pb\n");
 }
 
-void rb(t_list *top_b)
+void rb(t_list **top_b)
 {
 	int n;
 	t_list *tmp;
-	n = ft_lstsize(top_b);
 
-	if (!top_b || n < 2)
+	n = ft_lstsize((*top_b));
+	if (!(*top_b) || n < 2)
 		return;
 	else if(n == 2)
 		sb(top_b);
 	else
 	{
-		tmp = top_b;
-		top_b = tmp -> next;
-		ft_lstadd_back(&top_b, tmp);
+		tmp = (*top_b);
+		(*top_b) = tmp -> next;
+		ft_lstadd_back(top_b, tmp);
+		ft_printf("rb\n");
 	}
 }
 
 void ra(t_list **top_a)
 {
 	int n;
-	ft_printf("ra\n");
 	t_list *tmp;
 	n = ft_lstsize((*top_a));
 	if (!(*top_a) || n < 2)
-		return(ft_printf("this cond s true 00\n"),(*top_a));
+		return;
 	else if(n == 2)
-		return(ft_printf("this cond s true\n"),sa((*top_a)), (*top_a));
+		sa(top_a);
 	else
 	{
 		tmp = (*top_a);
 		(*top_a) = tmp -> next;
-		ft_lstadd_back(&(*top_a), tmp);
+		ft_lstadd_back(top_a, tmp);
+		ft_printf("ra\n");
 	}
-	// print_content(top_a);
-	return((*top_a));
 }
 
 void rr(t_list *top_a, t_list *top_b)
 {
 	ra(top_a);
 	rb(top_b);
+	ft_printf("rr\n");
 }
 
 void	rra(t_list **top_a)
@@ -126,36 +129,44 @@ void	rra(t_list **top_a)
 	if (!(*top_a) || n < 2)
 		return;
 	else if(n == 2)
-		return(sa((*top_a)));
-	last_node = ft_lstlast((*top_a));
-	bef_last =  get_beflast((*top_a));
-	bef_last -> next = NULL;
-	last_node -> next = top_a;
-	(*top_a) = last_node;
-	ft_printf("rra\n");
+		sa(top_a);
+	else
+	{
+		last_node = ft_lstlast((*top_a));
+		bef_last =  get_beflast((*top_a));
+		bef_last -> next = NULL;
+		last_node -> next = *top_a;
+		(*top_a) = last_node;
+		ft_printf("rra\n");
+	}
 	// print_content((*top_a));
 }
 
-void rrb(t_list *top_b)
+void rrb(t_list **top_b)
 {
 	t_list *last_node;
 	t_list *bef_last;
 	int n;
 
-	n = ft_lstsize(top_b);
-	if (!top_b || n < 2)
+	n = ft_lstsize((*top_b));
+	if (!(*top_b) || n < 2)
 		return;
 	else if(n == 2)
-		sb(top_b);
-	last_node = ft_lstlast(top_b);
-	bef_last = get_beflast(top_b);
-	bef_last -> next = NULL;
-	last_node -> next = top_b;
-	top_b = last_node;
+		sb((*top_b));
+	else
+	{
+		last_node = ft_lstlast((*top_b));
+		bef_last = get_beflast((*top_b));
+		bef_last -> next = NULL;
+		last_node -> next = (*top_b);
+		(*top_b) = last_node;
+		ft_printf("rrb\n");
+	}
 }
 
 void rrr(t_list *top_a, t_list *top_b)
 {
 	rra(top_a);
 	rrb(top_b);
+	ft_printf("rrr\n");
 }

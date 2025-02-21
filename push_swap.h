@@ -5,7 +5,6 @@
 #include <stdlib.h>
 #include <limits.h>
 #include <unistd.h>
-#include  <sys/types.h>
 
 typedef struct s_list
 {
