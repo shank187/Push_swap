@@ -6,7 +6,7 @@
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 19:56:58 by aelbour           #+#    #+#             */
-/*   Updated: 2025/02/21 15:43:45 by aelbour          ###   ########.fr       */
+/*   Updated: 2025/02/22 18:36:55 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,27 +23,36 @@ void handle_3num(t_list **top_a)
 		ptr = ptr -> next;
 	if(i == 2)
 	{	
-		rra(top_a);
+		rra(top_a, 1);
 		if(is_sorted(*top_a) == 0)	
-			sa(top_a);
+			sa(top_a, 1);
 	}
 	else if(i == 3)
 	{
-		sa(top_a);
+		sa(top_a, 1);
 	}
 	else if(i == 1)
 	{
-		ra(top_a);
+		ra(top_a, 1);
 		if(is_sorted((*top_a)) == 0)	
-			sa(top_a);
+			sa(top_a, 1);
 	}
 }
 
-ft_abs(int n)
+int is_sorted(t_list *top_a)
 {
-	if(n < 0)
-		n *=(-1);
-	return(n);
+	int last;
+	// print_content(top_a);
+	last = INT_MIN;
+	while(top_a)
+	{
+		if ((top_a -> content) < last)
+			return(0);
+		last = top_a -> content;
+		top_a = top_a -> next;
+	}
+	// ft_printf("is sorted\n");
+	return(1);
 }
 
 int main(int ac, char *av[])
@@ -56,13 +65,14 @@ int main(int ac, char *av[])
 		ft_clear(0, 0, 0, 1);
 	arr = to_arr(ac, av);
 	top_a = stock_args(arr);
-	print_content(top_a);
+	print_content(top_a, 0);
 	if(is_sorted(top_a))
 		return(ft_clear(&top_a, 0, 0, 0),1);
 	else if(ft_lstsize(top_a) == 2)
-		return(ft_printf("sa\n"),ft_clear(&top_a, 0, 0, 0), 1);
+		return(ft_printf("sa\n", 1),ft_clear(&top_a, 0, 0, 0), 1);
 	else if (ft_lstsize(top_a) == 3)
 		handle_3num(&top_a);
 	else if (ft_lstsize(top_a) > 3)
-		sort_all(top_a, top_b);
+		sort_all(&top_a, &top_b);
+	print_content(top_a, 0);
 }

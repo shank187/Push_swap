@@ -6,50 +6,51 @@
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 20:05:34 by aelbour           #+#    #+#             */
-/*   Updated: 2025/02/21 16:10:41 by aelbour          ###   ########.fr       */
+/*   Updated: 2025/02/22 18:21:20 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void sb(t_list **top_b)
+void sb(t_list **top_b, int wrt)
 {
 	t_list *tmp;
 
 	if(!(*top_b) || !((*top_b) -> next))
-		return((*top_b));
+		return;
 	tmp = (*top_b) -> next;
 	(*top_b) -> next = (*top_b) -> next -> next;
 	tmp -> next = (*top_b);
 	(*top_b) = tmp;
-	ft_printf("sb\n");
+	if(wrt)
+		ft_printf("sb\n", 1);
 	// print_content((*top_b));
-	return((*top_b));
 }
 
-void	sa(t_list **top_a)
+void	sa(t_list **top_a, int wrt)
 {
 	t_list *tmp;
 
 	if(!(*top_a) || !((*top_a) -> next))
-		return((*top_a));
+		return;
 	tmp = (*top_a) -> next;
 	(*top_a) -> next = (*top_a) -> next -> next;
 	tmp -> next = (*top_a);
 	(*top_a) = tmp;
-	ft_printf("sa\n");
+	if(wrt)
+		ft_printf("sa\n", 1);
 	// print_content((*top_a));
-	return((*top_a));
 }
 
-void ss(t_list **top_a, t_list **top_b)
+void ss(t_list **top_a, t_list **top_b, int wrt)
 {
-	sa(top_a);
-	sb(top_b);
-	ft_printf("ss\n");
+	sa(top_a, 0);
+	sb(top_b, 0);
+	if(wrt)
+		ft_printf("ss\n", 1);
 }
 
-void pa(t_list **top_a, t_list **top_b)
+void pa(t_list **top_a, t_list **top_b, int wrt)
 {
 	t_list *tmp;
 
@@ -59,10 +60,11 @@ void pa(t_list **top_a, t_list **top_b)
 	(*top_b) = (*top_b) -> next;
 	tmp -> next = (*top_a);
 	(*top_a) = tmp;
-	ft_printf("pa\n");
+	if(wrt)
+		ft_printf("pa\n", 1);
 }
 
-void pb(t_list **top_a, t_list **top_b)
+void pb(t_list **top_a, t_list **top_b, int wrt)
 {
 	t_list *tmp;
 
@@ -72,10 +74,11 @@ void pb(t_list **top_a, t_list **top_b)
 	(*top_a) = (*top_a) -> next;
 	tmp -> next = (*top_b);
 	(*top_b) = tmp;
-	ft_printf("pb\n");
+	if(wrt)
+		ft_printf("pb\n", 1);
 }
 
-void rb(t_list **top_b)
+void rb(t_list **top_b, int wrt)
 {
 	int n;
 	t_list *tmp;
@@ -83,43 +86,42 @@ void rb(t_list **top_b)
 	n = ft_lstsize((*top_b));
 	if (!(*top_b) || n < 2)
 		return;
-	else if(n == 2)
-		sb(top_b);
 	else
 	{
 		tmp = (*top_b);
 		(*top_b) = tmp -> next;
 		ft_lstadd_back(top_b, tmp);
-		ft_printf("rb\n");
+		if(wrt)
+			ft_printf("rb\n", 1);
 	}
 }
 
-void ra(t_list **top_a)
+void ra(t_list **top_a, int wrt)
 {
 	int n;
 	t_list *tmp;
 	n = ft_lstsize((*top_a));
 	if (!(*top_a) || n < 2)
 		return;
-	else if(n == 2)
-		sa(top_a);
 	else
 	{
 		tmp = (*top_a);
 		(*top_a) = tmp -> next;
 		ft_lstadd_back(top_a, tmp);
-		ft_printf("ra\n");
+		if(wrt)
+			ft_printf("ra\n", 1);
 	}
 }
 
-void rr(t_list *top_a, t_list *top_b)
+void rr(t_list **top_a, t_list **top_b, int wrt)
 {
-	ra(top_a);
-	rb(top_b);
-	ft_printf("rr\n");
+	ra(top_a, 0);
+	rb(top_b, 0);
+	if(wrt)
+		ft_printf("rr\n", 1);
 }
 
-void	rra(t_list **top_a)
+void	rra(t_list **top_a, int wrt)
 {
 	t_list *last_node;
 	t_list *bef_last;
@@ -128,8 +130,6 @@ void	rra(t_list **top_a)
 	n = ft_lstsize((*top_a));
 	if (!(*top_a) || n < 2)
 		return;
-	else if(n == 2)
-		sa(top_a);
 	else
 	{
 		last_node = ft_lstlast((*top_a));
@@ -137,12 +137,13 @@ void	rra(t_list **top_a)
 		bef_last -> next = NULL;
 		last_node -> next = *top_a;
 		(*top_a) = last_node;
-		ft_printf("rra\n");
+		if(wrt)
+			ft_printf("rra\n", 1);
 	}
 	// print_content((*top_a));
 }
 
-void rrb(t_list **top_b)
+void rrb(t_list **top_b, int wrt)
 {
 	t_list *last_node;
 	t_list *bef_last;
@@ -151,8 +152,6 @@ void rrb(t_list **top_b)
 	n = ft_lstsize((*top_b));
 	if (!(*top_b) || n < 2)
 		return;
-	else if(n == 2)
-		sb((*top_b));
 	else
 	{
 		last_node = ft_lstlast((*top_b));
@@ -160,13 +159,15 @@ void rrb(t_list **top_b)
 		bef_last -> next = NULL;
 		last_node -> next = (*top_b);
 		(*top_b) = last_node;
-		ft_printf("rrb\n");
+		if(wrt)
+			ft_printf("rrb\n", 1);
 	}
 }
 
-void rrr(t_list *top_a, t_list *top_b)
+void rrr(t_list **top_a, t_list **top_b, int wrt)
 {
-	rra(top_a);
-	rrb(top_b);
-	ft_printf("rrr\n");
+	rra(top_a, 0);
+	rrb(top_b, 0);
+	if(wrt)
+		ft_printf("rrr\n", 1);
 }

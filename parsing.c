@@ -6,7 +6,7 @@
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 19:00:34 by aelbour           #+#    #+#             */
-/*   Updated: 2025/02/10 21:41:22 by aelbour          ###   ########.fr       */
+/*   Updated: 2025/02/22 16:36:14 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char **to_arr(int ac, char *av[])
 			return(ft_clear(NULL, NULL, NULL, 1),NULL);
 		i++;
 	}
-	printf("string of args |%s|\n",s);
+	// printf("string of args |%s|\n",s);
 	return(ft_split(s,' '));
 }
 

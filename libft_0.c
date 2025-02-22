@@ -6,7 +6,7 @@
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 21:44:19 by aelbour           #+#    #+#             */
-/*   Updated: 2025/02/08 21:06:28 by aelbour          ###   ########.fr       */
+/*   Updated: 2025/02/22 18:26:32 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	if (!s)
 		return (NULL);
-	s_len = fp_strlen((char *) s);
+	s_len = ft_strlen((char *) s);
 	if (start > s_len)
 		return (ft_strdup(""));
-	s_len = fp_strlen((char *) &s[start]);
+	s_len = ft_strlen((char *) &s[start]);
 	size = len + 1;
 	if (s_len < len)
 		size = s_len + 1;
@@ -34,7 +34,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (c);
 }
  
-size_t	fp_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
 	size_t	i;
 
@@ -48,7 +48,7 @@ char	*ft_strjoin(char *s1, char *s2)
 {
 	size_t	siz;
 	char	*c;
-	siz = fp_strlen((char *) s1) + fp_strlen((char *) s2) + 1;
+	siz = ft_strlen((char *) s1) + ft_strlen((char *) s2) + 1;
 	c = (char *) malloc(siz);
 	if (!c)
 	{
@@ -57,7 +57,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	}
 	c[0] = 0;
 	if (s1)
-		ft_strlcat(c, s1, fp_strlen((char *) s1) + 1);
+		ft_strlcat(c, s1, ft_strlen((char *) s1) + 1);
 	ft_strlcat(c, s2, siz);
 	free(s1);
 	return (c);
