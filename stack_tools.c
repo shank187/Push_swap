@@ -6,7 +6,7 @@
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 15:34:01 by aelbour           #+#    #+#             */
-/*   Updated: 2025/02/22 18:41:18 by aelbour          ###   ########.fr       */
+/*   Updated: 2025/02/23 09:55:51 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,17 @@ void push_2b(t_list **top_a, t_list **top_b, int size_a)
 		}
 		else
 			ra(top_a, 1);
-	} 
+	}
+	// return;
 	while(i <= size_a - 3)
 	{
 		pb(top_a, top_b, 1);
 		i++;
 	}
+	// printf("the top a index %i\n", (*top_a )-> index);
 	handle_3num(top_a);
+	// printf("the top a index %i\n", (*top_a )-> index);
+
 	
 }
 
@@ -91,15 +95,17 @@ void sort_all(t_list **top_a, t_list **top_b)
 	int a, b;
 
 	push_2b(top_a, top_b, ft_lstsize(*top_a));
-	print_content(*top_b, 1);
-	print_content(*top_b, 0);
-	exit(1);
+	a = 0;
+	b = 0;
 	while(ft_lstsize(*top_b))
 	{
-		update_infos(*top_a, *top_a);
+		update_infos(*top_a, *top_b);
 		best_smoves(*top_b, &a, &b);
 		push_target(top_a, top_b, a, b);
 	}
+	// ft_printf("stack A:\n", 1);
+	// print_content(*top_a, 0);
+
 	while(!is_sorted(*top_a))
 		ra(top_a, 1);
 }

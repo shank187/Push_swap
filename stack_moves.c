@@ -6,7 +6,7 @@
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 20:05:34 by aelbour           #+#    #+#             */
-/*   Updated: 2025/02/22 18:21:20 by aelbour          ###   ########.fr       */
+/*   Updated: 2025/02/23 08:42:52 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void pb(t_list **top_a, t_list **top_b, int wrt)
 {
 	t_list *tmp;
 
-	if(!(*top_b))
+	if(!(*top_a))
 		return;
 	tmp = (*top_a);
 	(*top_a) = (*top_a) -> next;
@@ -80,11 +80,9 @@ void pb(t_list **top_a, t_list **top_b, int wrt)
 
 void rb(t_list **top_b, int wrt)
 {
-	int n;
 	t_list *tmp;
 
-	n = ft_lstsize((*top_b));
-	if (!(*top_b) || n < 2)
+	if (!(*top_b) || !(*top_b) -> next)
 		return;
 	else
 	{
@@ -98,10 +96,9 @@ void rb(t_list **top_b, int wrt)
 
 void ra(t_list **top_a, int wrt)
 {
-	int n;
 	t_list *tmp;
-	n = ft_lstsize((*top_a));
-	if (!(*top_a) || n < 2)
+
+	if (!(*top_a) || !(*top_a) -> next)
 		return;
 	else
 	{
@@ -125,10 +122,8 @@ void	rra(t_list **top_a, int wrt)
 {
 	t_list *last_node;
 	t_list *bef_last;
-	int n;
 
-	n = ft_lstsize((*top_a));
-	if (!(*top_a) || n < 2)
+	if (!(*top_a) || !(*top_a) -> next)
 		return;
 	else
 	{
@@ -147,10 +142,8 @@ void rrb(t_list **top_b, int wrt)
 {
 	t_list *last_node;
 	t_list *bef_last;
-	int n;
 
-	n = ft_lstsize((*top_b));
-	if (!(*top_b) || n < 2)
+	if (!(*top_b) || !(*top_b) -> next)
 		return;
 	else
 	{

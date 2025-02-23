@@ -6,7 +6,7 @@
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 15:56:58 by aelbour           #+#    #+#             */
-/*   Updated: 2025/02/22 16:52:27 by aelbour          ###   ########.fr       */
+/*   Updated: 2025/02/23 09:29:06 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	update_infos(t_list *stack_a, t_list *stack_b)
 	i = 0;
 	while(tmp)
 		tmp->pos = i++, tmp = tmp->next;
+	i = 0;
 	tmp = stack_b;
 	while(tmp)
 	{

@@ -6,20 +6,41 @@
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 19:56:58 by aelbour           #+#    #+#             */
-/*   Updated: 2025/02/22 18:36:55 by aelbour          ###   ########.fr       */
+/*   Updated: 2025/02/23 09:59:18 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+int get_max(t_list *ptr)
+{
+	int max;
+	int val;
+
+	max  = 0;
+	val = 0;
+	while(ptr)
+	{
+		if((ptr -> index) > max)
+		{
+			max = ptr -> index;
+			val = ptr -> content;
+		}
+		ptr = ptr -> next;
+   	}
+	return(val);
+}
+
 void handle_3num(t_list **top_a)
 {
 	int i;
+	int max_val;
 	t_list *ptr;
 
 	ptr = *top_a;
 	i = 0;
-	while(ptr && ++i && ptr -> index != 3 )
+	max_val = get_max(ptr);
+	while(ptr && ++i && ptr -> content != max_val )
 		ptr = ptr -> next;
 	if(i == 2)
 	{	
@@ -61,11 +82,12 @@ int main(int ac, char *av[])
 	t_list *top_a;
 	t_list *top_b;
 
+	top_b = NULL;
 	if(ac < 2)
 		ft_clear(0, 0, 0, 1);
 	arr = to_arr(ac, av);
 	top_a = stock_args(arr);
-	print_content(top_a, 0);
+	// print_content(top_a, 0);
 	if(is_sorted(top_a))
 		return(ft_clear(&top_a, 0, 0, 0),1);
 	else if(ft_lstsize(top_a) == 2)
@@ -74,5 +96,6 @@ int main(int ac, char *av[])
 		handle_3num(&top_a);
 	else if (ft_lstsize(top_a) > 3)
 		sort_all(&top_a, &top_b);
-	print_content(top_a, 0);
+	// ft_printf("FINAL RESULT\n", 1);
+	// print_content(top_a, 0);
 }

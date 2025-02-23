@@ -7,9 +7,9 @@ void print_content(t_list *head, int more)
 	while(ptr)
 	{
 		if (!more)
-			printf("node %i : %i |index = %i|\n",i, ptr -> content, ptr -> index);
+			printf("pos %i|value %i|index %i|\n",ptr -> pos, ptr -> content, ptr -> index);
 		else{
-			printf("pos %i|value %i|index %i|target %i|   \n",i, ptr -> content, ptr -> index, ptr -> target_pos, ptr -> cost_a, ptr -> cost_b);
+			printf("pos %i|value %i|index %i|target %i|cost A %i|cost B %i|\n",ptr -> pos, ptr -> content, ptr -> index, ptr -> target_pos, ptr -> cost_a, ptr -> cost_b);
 
 		}
 		ptr = ptr -> next;
