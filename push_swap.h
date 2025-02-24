@@ -41,6 +41,7 @@ void update_infos(t_list *stack_a, t_list *stack_b);
 int	ft_abs(int n);
 void best_smoves(t_list *top_b, int *a, int *b);
 void handle_3num(t_list **top_a);
+int find_smallest_pos(t_list *ptr);
 
 void	rrb(t_list **top_b, int wrt);
 void	rra(t_list **top_a, int wrt);

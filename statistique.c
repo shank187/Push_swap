@@ -6,7 +6,7 @@
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 15:56:58 by aelbour           #+#    #+#             */
-/*   Updated: 2025/02/23 09:29:06 by aelbour          ###   ########.fr       */
+/*   Updated: 2025/02/24 08:58:31 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,31 +77,37 @@ void	update_infos(t_list *stack_a, t_list *stack_b)
 	}
 }
 
-void best_smoves(t_list *top_b, int *a, int *b)
+int ft_max(int a, int b)
 {
-	int min_cost;
-	int ca;
-	int cb;
+	if(a > b)
+		return (a);
+	return(b);
+}
 
-	min_cost = INT_MAX;
-	while(top_b)
-	{
-		ca = top_b -> cost_a;
-		cb = top_b -> cost_b;
-		if(ca && cb && ca / ft_abs(ca) == cb / ft_abs(cb))
-		{
- 			if(ft_abs(cb) < min_cost || ft_abs(ca) < min_cost)
-			{
-				min_cost = ft_abs(ca) * (ft_abs(ca) >= ft_abs(cb))
-				 + ft_abs(cb) * (ft_abs(cb) > ft_abs(ca));
-				*a = ca ;
-				*b = cb;
-			}
-		}
-		else if(ft_abs(ca) + ft_abs(cb) < min_cost)
-			min_cost = ft_abs(ca) + ft_abs(cb);
-			*a = ca ;
-			*b = cb;
-		top_b = top_b -> next;
-	}
+void best_smoves(t_list *top_b, int *a, int *b) {
+    int min_cost = INT_MAX;
+    t_list *best = NULL;
+
+    while (top_b) {
+        int ca = top_b->cost_a;
+        int cb = top_b->cost_b;
+        int combined;
+
+        if ((ca > 0 && cb > 0) || (ca < 0 && cb < 0)) {
+            combined = ft_max(ft_abs(ca), ft_abs(cb));
+        } else {
+            combined = ft_abs(ca) + ft_abs(cb);
+        }
+
+        if (combined < min_cost) {
+            min_cost = combined;
+            best = top_b;
+        }
+        top_b = top_b->next;
+    }
+
+    if (best) {
+        *a = best->cost_a;
+        *b = best->cost_b;
+    }
 }
