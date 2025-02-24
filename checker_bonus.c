@@ -6,17 +6,20 @@
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 10:38:01 by aelbour           #+#    #+#             */
-/*   Updated: 2025/02/24 15:58:18 by aelbour          ###   ########.fr       */
+/*   Updated: 2025/02/24 20:45:36 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+int is_valid_move()
+{
+	if str
+}
 
 int main(int ac, char *av[])
 {
-	// atexit(f);
-	char **arr ;
+	char *inst ;
 	t_list *top_a;
 	t_list *top_b;
 	char *s;
@@ -24,12 +27,15 @@ int main(int ac, char *av[])
 	top_b = NULL;
 	if(ac < 2)
 		ft_clear(0, 0, 0, 1);
-	arr = to_arr(ac, av);
-	top_a = stock_args(arr);
+	top_a = stock_args(to_arr(ac, av));
 	if(is_sorted(top_a))
 		return(ft_clear(&top_a, 0, 0, 0),1);
-	while(s)
+	while(s = get_next_line(0))
 	{
-		s = get
-	}	
+		if(is_valid_move(s))
+			inst = ft_strjoin(inst, s);
+		else
+			return(ft_clear(&top_a, 0, inst, 1), 0);
+		free(s);
+	}
 }

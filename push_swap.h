@@ -6,6 +6,14 @@
 #include <limits.h>
 #include <unistd.h>
 
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
+# ifndef OPEN_MAX
+#  define OPEN_MAX 65534
+# endif
 typedef struct s_list
 {
 	int				content;
