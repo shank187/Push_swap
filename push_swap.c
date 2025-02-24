@@ -6,7 +6,7 @@
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 19:56:58 by aelbour           #+#    #+#             */
-/*   Updated: 2025/02/23 09:59:18 by aelbour          ###   ########.fr       */
+/*   Updated: 2025/02/23 10:28:27 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,10 @@ int is_sorted(t_list *top_a)
 	return(1);
 }
 
+
 int main(int ac, char *av[])
 {
+	// atexit(f);
 	char **arr ;
 	t_list *top_a;
 	t_list *top_b;
@@ -96,6 +98,7 @@ int main(int ac, char *av[])
 		handle_3num(&top_a);
 	else if (ft_lstsize(top_a) > 3)
 		sort_all(&top_a, &top_b);
+	ft_clear(&top_a, 0, 0, 0);
 	// ft_printf("FINAL RESULT\n", 1);
 	// print_content(top_a, 0);
 }

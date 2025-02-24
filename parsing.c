@@ -6,7 +6,7 @@
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 19:00:34 by aelbour           #+#    #+#             */
-/*   Updated: 2025/02/22 16:36:14 by aelbour          ###   ########.fr       */
+/*   Updated: 2025/02/23 10:34:04 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,6 @@ t_list *stock_args(char **arr)
 		ft_lstadd_back(&top_a, node);
 		i++;
 	}
+	ft_clear(0, arr, 0, 0);
 	return top_a;
 }

@@ -6,7 +6,7 @@
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 21:24:37 by aelbour           #+#    #+#             */
-/*   Updated: 2025/02/11 13:38:46 by aelbour          ###   ########.fr       */
+/*   Updated: 2025/02/23 10:37:29 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	ft_clear(t_list **lst, char **arr, char *s, int quit)
 	while (lst && ptr)
 	{
 		tmp = ptr->next;
-		printf("freed node with value = %i\n",ptr -> content);
+		// printf("freed node with value = %i\n",ptr -> content);
 		free(ptr);
 		ptr = tmp;
 	}
@@ -62,18 +62,20 @@ void	ft_clear(t_list **lst, char **arr, char *s, int quit)
 		*lst = NULL;
 	if(s)
 	{
-		printf("freed string with value %s \n" ,s);
+		// printf("freed string with value %s \n" ,s);
 		free(s);
 	}
 	if(arr)
 		while(arr[i])
 		{
-			printf("freed subs with value = %s\n",arr[i]);
+			// printf("freed subs with value = %s\n",arr[i]);
 			free(arr[i++]);
 		}
+	if(arr)
+		free(arr);
 	if(quit)
 	{
-		write(2, "Error\n" ,6);
+		ft_printf("Error\n",0);
 		exit(1);		
 	}
 }
