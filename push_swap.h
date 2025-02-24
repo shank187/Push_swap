@@ -43,6 +43,15 @@ void best_smoves(t_list *top_b, int *a, int *b);
 void handle_3num(t_list **top_a);
 int find_smallest_pos(t_list *ptr);
 
+char	*get_ln(char **s, char **l, int fd);
+char	*get_next_line(int fd);
+size_t	ft_strlcat2(char *dst, const char *src, size_t dstsize);
+char	*ft_substr2(char const *s, unsigned int start, size_t len);
+char	*ft_strjoin2(char *s1, char *s2, int is_s2_leak);
+size_t	ft_strlen2(const char *s);
+int		manage_prevs(char **s, char **l);
+char	*xd(char **s, char **l, int j, int i);
+
 void	rrb(t_list **top_b, int wrt);
 void	rra(t_list **top_a, int wrt);
 void	rrr(t_list **top_a, t_list **top_b, int wrt);

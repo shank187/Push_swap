@@ -6,7 +6,7 @@
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 15:56:58 by aelbour           #+#    #+#             */
-/*   Updated: 2025/02/24 08:58:31 by aelbour          ###   ########.fr       */
+/*   Updated: 2025/02/24 15:06:49 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ void	calc_costs(t_list *stack_b, int a_size, int b_size)
 
 int	aim_target(t_list *stack_b, t_list *stack_a)
 {
-	int min, target, sml, sml_pos;
+	int	min;
+	int	target;
+	int	sml;
+	int	sml_pos;
 
 	min = INT_MAX;
 	sml = INT_MAX;
@@ -84,30 +87,29 @@ int ft_max(int a, int b)
 	return(b);
 }
 
-void best_smoves(t_list *top_b, int *a, int *b) {
-    int min_cost = INT_MAX;
-    t_list *best = NULL;
+void best_smoves(t_list *top_b, int *a, int *b) 
+{
+	int min_cost;
+	int ca;
+	int cb;
+	int combined;
 
-    while (top_b) {
-        int ca = top_b->cost_a;
-        int cb = top_b->cost_b;
-        int combined;
-
-        if ((ca > 0 && cb > 0) || (ca < 0 && cb < 0)) {
-            combined = ft_max(ft_abs(ca), ft_abs(cb));
-        } else {
-            combined = ft_abs(ca) + ft_abs(cb);
-        }
-
-        if (combined < min_cost) {
-            min_cost = combined;
-            best = top_b;
-        }
-        top_b = top_b->next;
-    }
-
-    if (best) {
-        *a = best->cost_a;
-        *b = best->cost_b;
-    }
+	min_cost = INT_MAX;
+	while (top_b)
+	{
+		ca = top_b->cost_a;
+		cb = top_b->cost_b;
+		if ((ca > 0 && cb > 0) || (ca < 0 && cb < 0)) 
+			combined = ft_max(ft_abs(ca), ft_abs(cb));
+		else
+			combined = ft_abs(ca) + ft_abs(cb);
+		if (combined < min_cost)
+		{
+			min_cost = combined;
+			*a = ca;
+			*b = cb;
+		}
+		top_b = top_b->next;
+	}
 }
+
