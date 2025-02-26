@@ -6,7 +6,7 @@
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 10:38:01 by aelbour           #+#    #+#             */
-/*   Updated: 2025/02/26 15:25:43 by aelbour          ###   ########.fr       */
+/*   Updated: 2025/02/26 17:09:44 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int	execute_moves(char *s, t_list **stack_a, t_list **stack_b, int size_a)
 
 	i = 0;
 	arr = ft_split(s, '\n');
+	*stack_b = NULL;
 	while (arr[i])
 	{
 		if (ex_pushes(arr[i], stack_a, stack_b))
@@ -77,13 +78,13 @@ int	main(int ac, char *av[])
 	t_list	*top_b;
 	char	*s;
 
-	top_b = NULL;
 	if (ac < 2)
 		return (0);
 	top_a = stock_args(to_arr(ac, av));
 	if (!top_a)
 		return (ft_printf("Error\n", 0), 0);
 	s = get_next_line(0);
+	inst = ft_strdup("");
 	while (s)
 	{
 		if (is_valid_move(s))

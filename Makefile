@@ -1,7 +1,7 @@
 NAME = push_swap
 BONUS = checker
 
-SRC = libft_0.c libft_bonus.c mysplit.c push_swap.c stack_tools.c testing.c libft_1.c parsing.c stack_moves.c statistique.c stack_moves_1.c 
+SRC = libft_0.c libft_bonus.c mysplit.c push_swap.c stack_tools.c libft_1.c parsing.c stack_moves.c statistique.c stack_moves_1.c 
 SRC_BONUS = checker_bonus.c stack_moves.c mysplit.c libft_0.c libft_1.c libft_bonus.c get_next_line.c get_next_line_utils.c parsing.c stack_tools.c bonus_tools.c stack_moves_1.c
 
 CFLAGS = -Wall -Wextra -Werror

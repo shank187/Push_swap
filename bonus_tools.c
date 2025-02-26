@@ -6,7 +6,7 @@
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 11:30:07 by aelbour           #+#    #+#             */
-/*   Updated: 2025/02/26 11:33:29 by aelbour          ###   ########.fr       */
+/*   Updated: 2025/02/26 17:44:19 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	ex_swaps(char *s, t_list **stack_a, t_list **stack_b)
 		return (sa(stack_a, 0), 1);
 	else if (!ft_strncmp(s, "sb", 10))
 		return (sb(stack_b, 0), 1);
-	else if (!ft_strncmp(s, "rr", 10))
+	else if (!ft_strncmp(s, "ss", 10))
 		return (ss(stack_a, stack_b, 0), 1);
 	return (0);
 }
