@@ -6,7 +6,7 @@
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 15:28:57 by aelbour           #+#    #+#             */
-/*   Updated: 2025/02/22 18:26:32 by aelbour          ###   ########.fr       */
+/*   Updated: 2025/02/26 10:13:12 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ char	*ft_strdup(const char *s1)
 	ft_strlcpy(c, s1, l + 1);
 	return (c);
 }
+
 void ft_printf(char *s, int fd)
 {
 	if (s)
@@ -63,4 +64,19 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	}
 	dst[i] = 0;
 	return (src_len);
+}
+
+int is_sorted(t_list *top_a)
+{
+	int last;
+	// print_content(top_a, 0);
+	last = INT_MIN;
+	while(top_a)
+	{
+		if ((top_a -> content) < last)
+			return(0);
+		last = top_a -> content;
+		top_a = top_a -> next;
+	}
+	return(1);
 }

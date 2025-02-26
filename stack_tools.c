@@ -6,34 +6,13 @@
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 15:34:01 by aelbour           #+#    #+#             */
-/*   Updated: 2025/02/24 14:45:59 by aelbour          ###   ########.fr       */
+/*   Updated: 2025/02/26 08:59:08 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void push_2b(t_list **top_a, t_list **top_b, int size_a)
-{
-	int i;
 
-	i = 1;
-	while(i < size_a / 2)
-	{
-		if((*top_a) -> index < size_a / 2)
-		{
-			pb(top_a, top_b, 1);
-			i++;
-		}
-		else
-			ra(top_a, 1);
-	}
-	while(i <= size_a - 3)
-	{
-		pb(top_a, top_b, 1);
-		i++;
-	}
-	handle_3num(top_a);
-}
 
 void push_target(t_list **stack_a, t_list **stack_b, int a, int b)
 {
@@ -84,21 +63,11 @@ void push_target(t_list **stack_a, t_list **stack_b, int a, int b)
 	pa(stack_a, stack_b, 1);
 }
 
-void sort_all(t_list **top_a, t_list **top_b)
+int ft_abs(int n)
 {
-	int a, b;
-
-	push_2b(top_a, top_b, ft_lstsize(*top_a));
-	a = 0;
-	b = 0;
-	while(ft_lstsize(*top_b))
-	{
-		update_infos(*top_a, *top_b);
-		best_smoves(*top_b, &a, &b);
-		push_target(top_a, top_b, a, b);
-	}
-	while(!is_sorted(*top_a))
-		ra(top_a, 1);
+	if(n < 0)
+		n *=(-1);
+	return(n);
 }
 
 int get_index(t_list *top_a, int number)

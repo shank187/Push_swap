@@ -6,7 +6,7 @@
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 19:00:34 by aelbour           #+#    #+#             */
-/*   Updated: 2025/02/23 10:34:04 by aelbour          ###   ########.fr       */
+/*   Updated: 2025/02/25 17:55:59 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ char **to_arr(int ac, char *av[])
 			return(ft_clear(NULL, NULL, NULL, 1),NULL);
 		i++;
 	}
-	// printf("string of args |%s|\n",s);
 	return(ft_split(s,' '));
 }
 
@@ -74,14 +73,15 @@ void insert_data(t_list *node, t_list *top_a, int n)
 
 t_list *stock_args(char **arr)
 {
-	long i, n;
+	long i;
+	long n;
 	t_list *node;
 	t_list *top_a;
 	
 	top_a = NULL;
 	node = NULL;
 	i = 0;
-	while(arr[i])
+	while(arr && arr[i])
 	{
 		n = ft_atoi(arr[i]);
 		// printf("arr = %s num = %li\n",arr[i], n);

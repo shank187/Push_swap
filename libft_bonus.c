@@ -6,7 +6,7 @@
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 21:24:37 by aelbour           #+#    #+#             */
-/*   Updated: 2025/02/24 15:10:00 by aelbour          ###   ########.fr       */
+/*   Updated: 2025/02/26 08:48:59 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	ptr -> next = new;
 	new -> next = NULL;
 }
-
 
 void	ft_clear(t_list **lst, char **arr, char *s, int quit)
 {

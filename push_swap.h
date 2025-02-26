@@ -50,6 +50,8 @@ int	ft_abs(int n);
 void best_smoves(t_list *top_b, int *a, int *b);
 void handle_3num(t_list **top_a);
 int find_smallest_pos(t_list *ptr);
+void push_target(t_list **stack_a, t_list **stack_b, int a, int b);
+void print_content(t_list *head, int more);
 
 char	*get_ln(char **s, char **l, int fd);
 char	*get_next_line(int fd);
@@ -68,6 +70,7 @@ void	rb(t_list **top_b, int wrt);
 void	rr(t_list **top_a, t_list **top_b, int wrt);
 void	sa(t_list **top_a, int wrt);
 void 	sb(t_list **top_b, int wrt);
+void ss(t_list **top_a, t_list **top_b, int wrt);
 void	pb(t_list **top_a, t_list **top_b, int wrt);
 void	pa(t_list **top_a, t_list **top_b, int wrt);
 

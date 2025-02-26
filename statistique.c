@@ -6,18 +6,12 @@
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 15:56:58 by aelbour           #+#    #+#             */
-/*   Updated: 2025/02/24 15:06:49 by aelbour          ###   ########.fr       */
+/*   Updated: 2025/02/26 08:58:18 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include  "push_swap.h"
 
-int ft_abs(int n)
-{
-	if(n < 0)
-		n *=(-1);
-	return(n);
-}
 
 void	calc_costs(t_list *stack_b, int a_size, int b_size)
 {

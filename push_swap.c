@@ -6,7 +6,7 @@
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 19:56:58 by aelbour           #+#    #+#             */
-/*   Updated: 2025/02/23 10:28:27 by aelbour          ###   ########.fr       */
+/*   Updated: 2025/02/26 10:14:44 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,47 @@ int get_max(t_list *ptr)
 	return(val);
 }
 
+
+void push_2b(t_list **top_a, t_list **top_b, int size_a)
+{
+	int i;
+
+	i = 1;
+	while(i < size_a / 2)
+	{
+		if((*top_a) -> index < size_a / 2)
+		{
+			pb(top_a, top_b, 1);
+			i++;
+		}
+		else
+			ra(top_a, 1);
+	}
+	while(i <= size_a - 3)
+	{
+		pb(top_a, top_b, 1);
+		i++;
+	}
+	handle_3num(top_a);
+}
+
+void sort_all(t_list **top_a, t_list **top_b)
+{
+	int a, b;
+
+	push_2b(top_a, top_b, ft_lstsize(*top_a));
+	a = 0;
+	b = 0;
+	while(ft_lstsize(*top_b))
+	{
+		update_infos(*top_a, *top_b);
+		best_smoves(*top_b, &a, &b);
+		push_target(top_a, top_b, a, b);
+	}
+	while(!is_sorted(*top_a))
+		ra(top_a, 1);
+}
+
 void handle_3num(t_list **top_a)
 {
 	int i;
@@ -42,17 +83,17 @@ void handle_3num(t_list **top_a)
 	max_val = get_max(ptr);
 	while(ptr && ++i && ptr -> content != max_val )
 		ptr = ptr -> next;
-	if(i == 2)
+	if(i == 2 && !is_sorted(*top_a))
 	{	
 		rra(top_a, 1);
 		if(is_sorted(*top_a) == 0)	
 			sa(top_a, 1);
 	}
-	else if(i == 3)
+	else if(i == 3 && !is_sorted(*top_a))
 	{
 		sa(top_a, 1);
 	}
-	else if(i == 1)
+	else if(i == 1 && !is_sorted(*top_a))
 	{
 		ra(top_a, 1);
 		if(is_sorted((*top_a)) == 0)	
@@ -60,26 +101,9 @@ void handle_3num(t_list **top_a)
 	}
 }
 
-int is_sorted(t_list *top_a)
-{
-	int last;
-	// print_content(top_a);
-	last = INT_MIN;
-	while(top_a)
-	{
-		if ((top_a -> content) < last)
-			return(0);
-		last = top_a -> content;
-		top_a = top_a -> next;
-	}
-	// ft_printf("is sorted\n");
-	return(1);
-}
-
 
 int main(int ac, char *av[])
 {
-	// atexit(f);
 	char **arr ;
 	t_list *top_a;
 	t_list *top_b;
@@ -88,8 +112,9 @@ int main(int ac, char *av[])
 	if(ac < 2)
 		ft_clear(0, 0, 0, 1);
 	arr = to_arr(ac, av);
+	if(!arr)
+		return(ft_clear(0, 0, 0 ,1), 0);
 	top_a = stock_args(arr);
-	// print_content(top_a, 0);
 	if(is_sorted(top_a))
 		return(ft_clear(&top_a, 0, 0, 0),1);
 	else if(ft_lstsize(top_a) == 2)
@@ -99,6 +124,4 @@ int main(int ac, char *av[])
 	else if (ft_lstsize(top_a) > 3)
 		sort_all(&top_a, &top_b);
 	ft_clear(&top_a, 0, 0, 0);
-	// ft_printf("FINAL RESULT\n", 1);
-	// print_content(top_a, 0);
 }
