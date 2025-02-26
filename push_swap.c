@@ -6,40 +6,39 @@
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 19:56:58 by aelbour           #+#    #+#             */
-/*   Updated: 2025/02/26 10:14:44 by aelbour          ###   ########.fr       */
+/*   Updated: 2025/02/26 12:16:00 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int get_max(t_list *ptr)
+int	get_max(t_list *ptr)
 {
-	int max;
-	int val;
+	int	max;
+	int	val;
 
-	max  = 0;
+	max = 0;
 	val = 0;
-	while(ptr)
+	while (ptr)
 	{
-		if((ptr -> index) > max)
+		if ((ptr -> index) > max)
 		{
 			max = ptr -> index;
 			val = ptr -> content;
 		}
 		ptr = ptr -> next;
-   	}
-	return(val);
+	}
+	return (val);
 }
 
-
-void push_2b(t_list **top_a, t_list **top_b, int size_a)
+void	push_2b(t_list **top_a, t_list **top_b, int size_a)
 {
-	int i;
+	int	i;
 
 	i = 1;
-	while(i < size_a / 2)
+	while (i < size_a / 2)
 	{
-		if((*top_a) -> index < size_a / 2)
+		if ((*top_a)-> index < size_a / 2)
 		{
 			pb(top_a, top_b, 1);
 			i++;
@@ -47,7 +46,7 @@ void push_2b(t_list **top_a, t_list **top_b, int size_a)
 		else
 			ra(top_a, 1);
 	}
-	while(i <= size_a - 3)
+	while (i <= size_a - 3)
 	{
 		pb(top_a, top_b, 1);
 		i++;
@@ -55,73 +54,73 @@ void push_2b(t_list **top_a, t_list **top_b, int size_a)
 	handle_3num(top_a);
 }
 
-void sort_all(t_list **top_a, t_list **top_b)
+void	sort_all(t_list **top_a, t_list **top_b)
 {
-	int a, b;
+	int	a;
+	int	b;
 
 	push_2b(top_a, top_b, ft_lstsize(*top_a));
 	a = 0;
 	b = 0;
-	while(ft_lstsize(*top_b))
+	while (ft_lstsize(*top_b))
 	{
 		update_infos(*top_a, *top_b);
 		best_smoves(*top_b, &a, &b);
 		push_target(top_a, top_b, a, b);
 	}
-	while(!is_sorted(*top_a))
+	while (!is_sorted(*top_a))
 		ra(top_a, 1);
 }
 
-void handle_3num(t_list **top_a)
+void	handle_3num(t_list **top_a)
 {
-	int i;
-	int max_val;
-	t_list *ptr;
+	int		i;
+	int		max_val;
+	t_list	*ptr;
 
 	ptr = *top_a;
 	i = 0;
 	max_val = get_max(ptr);
-	while(ptr && ++i && ptr -> content != max_val )
+	while (ptr && ++i && ptr -> content != max_val)
 		ptr = ptr -> next;
-	if(i == 2 && !is_sorted(*top_a))
-	{	
+	if (i == 2 && !is_sorted(*top_a))
+	{
 		rra(top_a, 1);
-		if(is_sorted(*top_a) == 0)	
+		if (is_sorted(*top_a) == 0)
 			sa(top_a, 1);
 	}
-	else if(i == 3 && !is_sorted(*top_a))
+	else if (i == 3 && !is_sorted(*top_a))
 	{
 		sa(top_a, 1);
 	}
-	else if(i == 1 && !is_sorted(*top_a))
+	else if (i == 1 && !is_sorted(*top_a))
 	{
 		ra(top_a, 1);
-		if(is_sorted((*top_a)) == 0)	
+		if (is_sorted((*top_a)) == 0)
 			sa(top_a, 1);
 	}
 }
 
-
-int main(int ac, char *av[])
+int	main(int ac, char *av[])
 {
-	char **arr ;
-	t_list *top_a;
-	t_list *top_b;
+	char	**arr ;
+	t_list	*top_a;
+	t_list	*top_b;
 
 	top_b = NULL;
-	if(ac < 2)
-		ft_clear(0, 0, 0, 1);
+	if (ac < 2)
+		ft_clear(0, 0, 1);
 	arr = to_arr(ac, av);
-	if(!arr)
-		return(ft_clear(0, 0, 0 ,1), 0);
+	if (!arr)
+		return (ft_clear(0, 0, 1), 0);
 	top_a = stock_args(arr);
-	if(is_sorted(top_a))
-		return(ft_clear(&top_a, 0, 0, 0),1);
-	else if(ft_lstsize(top_a) == 2)
-		return(ft_printf("sa\n", 1),ft_clear(&top_a, 0, 0, 0), 1);
+	if (is_sorted(top_a))
+		return (ft_clear(&top_a, 0, 0), 1);
+	else if (ft_lstsize(top_a) == 2)
+		return (ft_printf("sa\n", 1), ft_clear(&top_a, 0, 0), 1);
 	else if (ft_lstsize(top_a) == 3)
 		handle_3num(&top_a);
 	else if (ft_lstsize(top_a) > 3)
 		sort_all(&top_a, &top_b);
-	ft_clear(&top_a, 0, 0, 0);
+	ft_clear(&top_a, 0, 0);
 }

@@ -6,10 +6,9 @@
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 15:27:39 by aelbour           #+#    #+#             */
-/*   Updated: 2025/02/25 17:42:05 by aelbour          ###   ########.fr       */
+/*   Updated: 2025/02/26 12:02:17 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "push_swap.h"
 
@@ -92,18 +91,18 @@ char	**ft_split(char *s, char c)
 	char	**arr;
 
 	if (!s)
-		return (ft_clear(NULL, NULL, NULL, 1), NULL);  
+		return (ft_clear(0, 0, 1), NULL);
 	cols = count_cols(s, c);
 	arr = (char **)malloc((cols + 1) * sizeof(char *));
 	if (!arr)
-		return (free(s), NULL);			
+		return (free(s), NULL);
 	arr[cols] = NULL;
 	if (cols)
 	{
 		if (ft_store(arr, s, c, cols))
 			return (free(s), arr);
 		else
-			return (free(s), NULL);			
+			return (free(s), NULL);
 	}
 	return (free(s), arr);
 }
