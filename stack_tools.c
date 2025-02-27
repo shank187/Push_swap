@@ -6,7 +6,7 @@
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 15:34:01 by aelbour           #+#    #+#             */
-/*   Updated: 2025/02/26 15:17:57 by aelbour          ###   ########.fr       */
+/*   Updated: 2025/02/27 14:45:31 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	handle_difr(t_list **stack_a, t_list **stack_b, int a, int b)
 
 void	push_target(t_list **stack_a, t_list **stack_b, int a, int b)
 {
-	while (a && b && (a > 0 == b > 0))
+	while (a && b && ((a > 0) == (b > 0)))
 	{
 		if (a > 0 && b > 0)
 		{
