@@ -6,7 +6,7 @@
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 10:38:01 by aelbour           #+#    #+#             */
-/*   Updated: 2025/02/27 20:11:12 by aelbour          ###   ########.fr       */
+/*   Updated: 2025/02/28 10:17:19 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	main(int ac, char *av[])
 		return (0);
 	top_a = stock_args_bonus(to_arr_bonus(ac, av));
 	if (!top_a)
-		return (ft_printf_bonus("Error\n", 0), 0);
+		return (ft_printf_bonus("Error\n", 2), 0);
 	s = get_next_line(0);
 	inst = ft_strdup_bonus("");
 	while (s)
