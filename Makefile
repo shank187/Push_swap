@@ -1,33 +1,43 @@
-NAME = push_swap
-BONUS = checker
+NAME         = push_swap
+BONUS_NAME   = checker
 
-SRC = libft_0.c libft_bonus.c mysplit.c push_swap.c stack_tools.c libft_1.c parsing.c stack_moves.c statistique.c stack_moves_1.c 
-SRC_BONUS = checker_bonus.c stack_moves.c mysplit.c libft_0.c libft_1.c libft_bonus.c get_next_line.c get_next_line_utils.c parsing.c stack_tools.c bonus_tools.c stack_moves_1.c
+SRC_PUSH_SWAP = libft_0.c libft_bonus.c mysplit.c push_swap.c stack_tools.c \
+                libft_1.c parsing.c stack_moves.c statistique.c stack_moves_1.c
+		
+SRC_BONUS     = checker_bonus.c stack_moves_bonus.c mysplit_bonus.c libft_0_bonus.c \
+                libft_1_bonus.c libft_2bonus.c get_next_line.c get_next_line_utils.c \
+                parsing_bonus.c bonus_tools.c stack_moves1_bonus.c
 
-CFLAGS = -Wall -Wextra -Werror
-CC = cc
-OBJ = $(SRC:%.c=%.o)
-OBJ_BONUS = $(SRC_BONUS:%.c=%.o)
-RM = rm -f
+HEADER         = push_swap.h
+HEADER_BONUS   = push_swap_bonus.h
+
+CC      = cc
+CFLAGS  = -Wall -Wextra -Werror
+
+OBJ_PUSH_SWAP = $(SRC_PUSH_SWAP:.c=.o)
+OBJ_BONUS     = $(SRC_BONUS:.c=.o)
 
 all: $(NAME)
 
-bonus: $(BONUS)
+$(NAME): $(OBJ_PUSH_SWAP)
+	$(CC) $(CFLAGS) $^ -o $@
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+bonus: $(BONUS_NAME)
 
-$(BONUS): $(OBJ_BONUS)
-	$(CC) $(CFLAGS) $(OBJ_BONUS) -o $(BONUS)
+$(BONUS_NAME): $(OBJ_BONUS)
+	$(CC) $(CFLAGS) $^ -o $@
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
+$(OBJ_PUSH_SWAP): $(HEADER)
+$(OBJ_BONUS): $(HEADER_BONUS)
+
 clean:
-	$(RM) $(OBJ) $(OBJ_BONUS)
+	rm -f $(OBJ_PUSH_SWAP) $(OBJ_BONUS)
 
 fclean: clean
-	$(RM) $(NAME) $(BONUS)
+	rm -f $(NAME) $(BONUS_NAME)
 
 re: fclean all
 

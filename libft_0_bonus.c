@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft_0.c                                          :+:      :+:    :+:   */
+/*   libft_0_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/05 21:44:19 by aelbour           #+#    #+#             */
-/*   Updated: 2025/02/27 20:32:47 by aelbour          ###   ########.fr       */
+/*   Created: 2025/02/27 18:11:07 by aelbour           #+#    #+#             */
+/*   Updated: 2025/02/27 20:34:02 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr_bonus(char const *s, unsigned int start, size_t len)
 {
 	size_t	s_len;
 	char	*c;
@@ -20,21 +20,21 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	if (!s)
 		return (NULL);
-	s_len = ft_strlen((char *) s);
+	s_len = ft_strlen_bonus((char *) s);
 	if (start > s_len)
-		return (ft_strdup(""));
-	s_len = ft_strlen((char *) &s[start]);
+		return (ft_strdup_bonus(""));
+	s_len = ft_strlen_bonus((char *) &s[start]);
 	size = len + 1;
 	if (s_len < len)
 		size = s_len + 1;
 	c = (char *) malloc(size);
 	if (!c)
 		return (NULL);
-	ft_strlcpy(c, &s[start], size);
+	ft_strlcpy_bonus(c, &s[start], size);
 	return (c);
 }
 
-size_t	ft_strlen(const char *s)
+size_t	ft_strlen_bonus(const char *s)
 {
 	size_t	i;
 
@@ -44,12 +44,12 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin_bonus(char *s1, char *s2)
 {
 	size_t	siz;
 	char	*c;
 
-	siz = ft_strlen((char *) s1) + ft_strlen((char *) s2) + 1;
+	siz = ft_strlen_bonus((char *) s1) + ft_strlen_bonus((char *) s2) + 1;
 	c = (char *) malloc(siz);
 	if (!c)
 	{
@@ -58,13 +58,13 @@ char	*ft_strjoin(char *s1, char *s2)
 	}
 	c[0] = 0;
 	if (s1)
-		ft_strlcat(c, s1, ft_strlen((char *) s1) + 1);
-	ft_strlcat(c, s2, siz);
+		ft_strlcat_bonus(c, s1, ft_strlen_bonus((char *) s1) + 1);
+	ft_strlcat_bonus(c, s2, siz);
 	free(s1);
 	return (c);
 }
 
-static void	ft_get_sign(int *s, long *i, const char *str)
+static void	ft_get_sign_bonus(int *s, long *i, const char *str)
 {
 	*s = 1;
 	if (str[*i] == '-' || str[*i] == '+')
@@ -75,7 +75,7 @@ static void	ft_get_sign(int *s, long *i, const char *str)
 	}
 }
 
-long	ft_atoi(const char *str)
+long	ft_atoi_bonus(const char *str)
 {
 	long	i;
 	long	t;
@@ -85,7 +85,7 @@ long	ft_atoi(const char *str)
 	t = 0;
 	oldt = 0;
 	i = 0;
-	ft_get_sign(&s, &i, str);
+	ft_get_sign_bonus(&s, &i, str);
 	if (!str[i])
 		return (2147483649);
 	while (str[i])

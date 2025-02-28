@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   parsing_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/06 19:00:34 by aelbour           #+#    #+#             */
-/*   Updated: 2025/02/27 17:16:46 by aelbour          ###   ########.fr       */
+/*   Created: 2025/02/27 17:54:31 by aelbour           #+#    #+#             */
+/*   Updated: 2025/02/27 20:24:17 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
-int	is_spcnum(char *s)
+int	is_spcnum_bonus(char *s)
 {
 	size_t	i;
 	int		valid;
@@ -31,31 +31,31 @@ int	is_spcnum(char *s)
 	return (valid);
 }
 
-char	**to_arr(int ac, char *av[])
+char	**to_arr_bonus(int ac, char *av[])
 {
 	int		i;
 	char	*s;
 
-	if (!is_spcnum(av[1]))
-		return (ft_clear(0, 0, 1), NULL);
-	s = ft_strjoin(ft_strdup(""), av[1]);
+	if (!is_spcnum_bonus(av[1]))
+		return (ft_clear_bonus(0, 0, 1), NULL);
+	s = ft_strjoin_bonus(ft_strdup_bonus(""), av[1]);
 	i = 2;
 	while (i < ac)
 	{
-		if (!is_spcnum(av[i]))
-			return (free(s), ft_clear(0, 0, 1), NULL);
-		s = ft_strjoin(s, " ");
+		if (!is_spcnum_bonus(av[i]))
+			return (free(s), ft_clear_bonus(0, 0, 1), NULL);
+		s = ft_strjoin_bonus(s, " ");
 		if (!(s))
-			return (ft_clear(0, 0, 1), NULL);
-		(s) = ft_strjoin((s), av[i]);
+			return (ft_clear_bonus(0, 0, 1), NULL);
+		(s) = ft_strjoin_bonus((s), av[i]);
 		if (!(s))
-			return (ft_clear(0, 0, 1), NULL);
+			return (ft_clear_bonus(0, 0, 1), NULL);
 		i++;
 	}
-	return (ft_split(s, ' '));
+	return (ft_split_bonus(s, ' '));
 }
 
-int	check_dubl(int n, t_list *top_a)
+int	check_dubl_bonus(int n, t_list *top_a)
 {
 	if (!top_a)
 		return (1);
@@ -68,16 +68,7 @@ int	check_dubl(int n, t_list *top_a)
 	return (1);
 }
 
-void	insert_data(t_list *node, t_list *top_a, int n)
-{
-	node -> content = n;
-	if (!top_a)
-		node -> index = 1;
-	else
-		node -> index = get_index(top_a, n);
-}
-
-t_list	*stock_args(char **arr)
+t_list	*stock_args_bonus(char **arr)
 {
 	long	i;
 	long	n;
@@ -89,18 +80,24 @@ t_list	*stock_args(char **arr)
 	i = 0;
 	while (arr && arr[i])
 	{
-		n = ft_atoi(arr[i]);
+		n = ft_atoi_bonus(arr[i]);
 		if (n > INT_MAX || n < INT_MIN)
-			return (ft_clear(&top_a, arr, 1), NULL);
-		else if (!check_dubl(n, top_a))
-			return (ft_clear(&top_a, arr, 1), NULL);
+			return (ft_clear_bonus(&top_a, arr, 1), NULL);
+		else if (!check_dubl_bonus(n, top_a))
+			return (ft_clear_bonus(&top_a, arr, 1), NULL);
 		node = malloc(sizeof(t_list));
 		if (!node)
-			return (ft_clear(&top_a, arr, 1), NULL);
-		insert_data(node, top_a, n);
-		ft_lstadd_back(&top_a, node);
+			return (ft_clear_bonus(&top_a, arr, 1), NULL);
+		node -> content = n;
+		ft_lstadd_back_bonus(&top_a, node);
 		i++;
 	}
-	ft_clear(0, arr, 0);
+	ft_clear_bonus(0, arr, 0);
 	return (top_a);
+}
+
+void	rrr_bonus(t_list **top_a, t_list **top_b)
+{
+	rra_bonus(top_a);
+	rrb_bonus(top_b);
 }

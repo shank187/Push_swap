@@ -6,11 +6,11 @@
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 10:38:01 by aelbour           #+#    #+#             */
-/*   Updated: 2025/02/26 17:09:44 by aelbour          ###   ########.fr       */
+/*   Updated: 2025/02/27 20:11:12 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
@@ -48,7 +48,7 @@ int	execute_moves(char *s, t_list **stack_a, t_list **stack_b, int size_a)
 	int		i;
 
 	i = 0;
-	arr = ft_split(s, '\n');
+	arr = ft_split_bonus(s, '\n');
 	*stack_b = NULL;
 	while (arr[i])
 	{
@@ -61,8 +61,8 @@ int	execute_moves(char *s, t_list **stack_a, t_list **stack_b, int size_a)
 		else if (ex_rrab(arr[i], stack_a, stack_b))
 			i++;
 	}
-	ft_clear(0, arr, 0);
-	if (ft_lstsize(*stack_a) == size_a && is_sorted(*stack_a))
+	ft_clear_bonus(0, arr, 0);
+	if (ft_lstsize_bonus(*stack_a) == size_a && is_sorted_bonus(*stack_a))
 		return (1);
 	return (0);
 }
@@ -80,22 +80,22 @@ int	main(int ac, char *av[])
 
 	if (ac < 2)
 		return (0);
-	top_a = stock_args(to_arr(ac, av));
+	top_a = stock_args_bonus(to_arr_bonus(ac, av));
 	if (!top_a)
-		return (ft_printf("Error\n", 0), 0);
+		return (ft_printf_bonus("Error\n", 0), 0);
 	s = get_next_line(0);
-	inst = ft_strdup("");
+	inst = ft_strdup_bonus("");
 	while (s)
 	{
 		if (is_valid_move(s))
-			inst = ft_strjoin(inst, s);
+			inst = ft_strjoin_bonus(inst, s);
 		else
-			return (free(inst), ft_clear(&top_a, 0, 1), 0);
+			return (free(inst), ft_clear_bonus(&top_a, 0, 1), 0);
 		free(s);
 		s = get_next_line(0);
 	}
-	if (execute_moves(inst, &top_a, &top_b, ft_lstsize(top_a)))
-		return (ft_printf("OK\n", 1), ft_clear(&top_a, 0, 0), 1);
-	return (ft_printf("KO\n", 1), ft_clear(&top_a, 0, 0)
-		, ft_clear(&top_b, 0, 0), 1);
+	if (execute_moves(inst, &top_a, &top_b, ft_lstsize_bonus(top_a)))
+		return (ft_printf_bonus("OK\n", 1), ft_clear_bonus(&top_a, 0, 0), 1);
+	return (ft_printf_bonus("KO\n", 1), ft_clear_bonus(&top_a, 0, 0)
+		, ft_clear_bonus(&top_b, 0, 0), 1);
 }

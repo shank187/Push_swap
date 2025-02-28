@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft_bonus.c                                      :+:      :+:    :+:   */
+/*   libft_2bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/06 21:24:37 by aelbour           #+#    #+#             */
-/*   Updated: 2025/02/27 15:42:24 by aelbour          ###   ########.fr       */
+/*   Created: 2025/02/27 18:16:34 by aelbour           #+#    #+#             */
+/*   Updated: 2025/02/27 20:13:38 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
-t_list	*ft_lstlast(t_list *lst)
+t_list	*ft_lstlast_bonus(t_list *lst)
 {
 	t_list	*ptr;
 
@@ -24,7 +24,7 @@ t_list	*ft_lstlast(t_list *lst)
 	return (ptr);
 }
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_back_bonus(t_list **lst, t_list *new)
 {
 	t_list	*ptr;
 
@@ -36,12 +36,12 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		new -> next = NULL;
 		return ;
 	}
-	ptr = ft_lstlast(*lst);
+	ptr = ft_lstlast_bonus(*lst);
 	ptr -> next = new;
 	new -> next = NULL;
 }
 
-void	ft_clear(t_list **lst, char **arr, int quit)
+void	ft_clear_bonus(t_list **lst, char **arr, int quit)
 {
 	t_list	*ptr;
 	t_list	*tmp;
@@ -65,12 +65,12 @@ void	ft_clear(t_list **lst, char **arr, int quit)
 		free(arr);
 	if (quit)
 	{
-		ft_printf("Error\n", 2);
+		ft_printf_bonus("Error\n", 2);
 		exit(1);
 	}
 }
 
-int	ft_lstsize(t_list *lst)
+int	ft_lstsize_bonus(t_list *lst)
 {
 	t_list	*ptr;
 	int		count;
@@ -85,7 +85,7 @@ int	ft_lstsize(t_list *lst)
 	return (count);
 }
 
-t_list	*get_beflast(t_list *lst)
+t_list	*get_beflast_bonus(t_list *lst)
 {
 	t_list	*ptr;
 

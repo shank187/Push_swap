@@ -6,7 +6,7 @@
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 19:56:58 by aelbour           #+#    #+#             */
-/*   Updated: 2025/02/26 12:16:00 by aelbour          ###   ########.fr       */
+/*   Updated: 2025/02/27 20:31:27 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int	main(int ac, char *av[])
 
 	top_b = NULL;
 	if (ac < 2)
-		ft_clear(0, 0, 1);
+		return (0);
 	arr = to_arr(ac, av);
 	if (!arr)
 		return (ft_clear(0, 0, 1), 0);

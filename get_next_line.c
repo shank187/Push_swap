@@ -6,11 +6,11 @@
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 15:16:06 by aelbour           #+#    #+#             */
-/*   Updated: 2025/02/24 15:55:50 by aelbour          ###   ########.fr       */
+/*   Updated: 2025/02/27 20:06:14 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 int	manage_prevs(char **s, char **l)
 {
