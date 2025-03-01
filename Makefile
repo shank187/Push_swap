@@ -2,7 +2,7 @@ NAME         = push_swap
 BONUS_NAME   = checker
 
 SRC_PUSH_SWAP = libft_0.c libft_bonus.c mysplit.c push_swap.c stack_tools.c \
-                libft_1.c parsing.c stack_moves.c statistique.c stack_moves_1.c
+                libft_1.c parsing.c stack_moves.c statistique.c stack_moves_1.c optimization.c
 		
 SRC_BONUS     = checker_bonus.c stack_moves_bonus.c mysplit_bonus.c libft_0_bonus.c \
                 libft_1_bonus.c libft_2bonus.c get_next_line.c get_next_line_utils.c \

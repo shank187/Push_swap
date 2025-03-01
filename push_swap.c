@@ -6,7 +6,7 @@
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 19:56:58 by aelbour           #+#    #+#             */
-/*   Updated: 2025/02/27 20:31:27 by aelbour          ###   ########.fr       */
+/*   Updated: 2025/03/01 15:53:08 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	sort_all(t_list **top_a, t_list **top_b)
 {
 	int	a;
 	int	b;
+	int	choose;
 
 	push_2b(top_a, top_b, ft_lstsize(*top_a));
 	a = 0;
@@ -68,8 +69,14 @@ void	sort_all(t_list **top_a, t_list **top_b)
 		best_smoves(*top_b, &a, &b);
 		push_target(top_a, top_b, a, b);
 	}
+	choose = rr_or_rrr(*top_a);
 	while (!is_sorted(*top_a))
-		ra(top_a, 1);
+	{
+		if (choose)
+			ra(top_a, 1);
+		else
+			rra(top_a, 1);
+	}
 }
 
 void	handle_3num(t_list **top_a)
@@ -120,6 +127,8 @@ int	main(int ac, char *av[])
 		return (ft_printf("sa\n", 1), ft_clear(&top_a, 0, 0), 1);
 	else if (ft_lstsize(top_a) == 3)
 		handle_3num(&top_a);
+	else if (ft_lstsize(top_a) == 5)
+		handle_5num(&top_a, &top_b);
 	else if (ft_lstsize(top_a) > 3)
 		sort_all(&top_a, &top_b);
 	ft_clear(&top_a, 0, 0);

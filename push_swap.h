@@ -6,14 +6,13 @@
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 14:21:33 by aelbour           #+#    #+#             */
-/*   Updated: 2025/02/27 20:07:23 by aelbour          ###   ########.fr       */
+/*   Updated: 2025/03/01 16:52:45 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <stdio.h>
 # include <stdlib.h>
 # include <limits.h>
 # include <unistd.h>
@@ -68,6 +67,9 @@ void	sb(t_list **top_b, int wrt);
 void	ss(t_list **top_a, t_list **top_b, int wrt);
 void	pb(t_list **top_a, t_list **top_b, int wrt);
 void	pa(t_list **top_a, t_list **top_b, int wrt);
+int		rr_or_rrr(t_list *stack);
+void	handle_5num(t_list **top_a, t_list **top_b);
+
 // void	print_content(t_list *head, int more);
 
 #endif
